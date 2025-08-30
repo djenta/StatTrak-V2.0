@@ -1,0 +1,77 @@
+# --- Node / Capacitor ---
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Capacitor build output
+# (only ignore www/ if it’s auto-generated — in your case, www/ IS your source → keep it tracked)
+# www/
+
+# --- Android (from official template) ---
+*.apk
+*.aar
+*.ap_
+*.aab
+
+*.dex
+*.class
+
+bin/
+gen/
+out/
+
+.gradle/
+build/
+local.properties
+
+proguard/
+
+*.log
+.navigation/
+captures/
+
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+.idea/modules.xml
+.idea/navEditor.xml
+
+# Keystores (don’t commit signing keys)
+*.jks
+*.keystore
+
+.externalNativeBuild
+.cxx/
+
+# Firebase / Google services
+google-services.json
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+fastlane/readme.md
+
+# VCS
+vcs.xml
+
+# Lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+
+# Profiling
+*.hprof
+
+# Capacitor generated assets (copied during build)
+app/src/main/assets/public
+app/src/main/assets/capacitor.config.json
+app/src/main/assets/capacitor.plugins.json
+app/src/main/res/xml/config.xml
