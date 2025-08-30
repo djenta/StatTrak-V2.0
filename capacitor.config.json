@@ -1,0 +1,6 @@
+{
+  "appId": "com.frank.stattrak",
+  "appName": "stattrak",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

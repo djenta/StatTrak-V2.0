@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>StatTrak</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Lucide Icons (MIT) -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+</head>
+
+<body>
+  <main class="wrap">
+    <h1>StatTrak</h1>
+
+    <!-- Main counters -->
+    <div class="stack">
+      <div class="stack">
+        <button id="stopBtn">
+          <span class="btn-ico" aria-hidden="true">
+            <!-- Police Car -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="7" rx="2"></rect>
+              <path d="M3 11l1-4h16l1 4"></path>
+              <circle cx="7.5" cy="18" r="1.5"></circle>
+              <circle cx="16.5" cy="18" r="1.5"></circle>
+            </svg>
+          </span>
+          <span class="btn-label">Traffic Stops</span>
+          <span class="btn-count">0</span>
+        </button>
+
+        <button id="citeBtn">
+          <span class="btn-ico" aria-hidden="true">
+            <!-- Document -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2h9l5 5v15H6z"></path>
+              <path d="M14 2v6h6"></path>
+              <line x1="8" y1="13" x2="16" y2="13"></line>
+              <line x1="8" y1="17" x2="16" y2="17"></line>
+            </svg>
+          </span>
+          <span class="btn-label">Citations</span>
+          <span class="btn-count">0</span>
+        </button>
+
+        <button id="arrestBtn">
+          <span class="btn-ico" aria-hidden="true">
+            <!-- Handcuffs -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="7" cy="17" r="3"></circle>
+              <circle cx="17" cy="7" r="3"></circle>
+              <path d="M9.5 14.5l5-5"></path>
+            </svg>
+          </span>
+          <span class="btn-label">Arrests</span>
+          <span class="btn-count">0</span>
+        </button>
+
+        <button id="ebpBtn">
+          <span class="btn-ico" aria-hidden="true">
+            <!-- Map Pin -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s-6-5.5-6-10a6 6 0 1 1 12 0c0 4.5-6 10-6 10z"></path>
+              <circle cx="12" cy="11" r="2"></circle>
+            </svg>
+          </span>
+          <span class="btn-label">EBP</span>
+          <span class="btn-count">0</span>
+        </button>
+      </div>
+
+
+    </div>
+
+    <!-- Current month daily list -->
+    <div id="monthList" class="month-list" aria-label="Current month daily totals"></div>
+
+    <!-- Bottom actions -->
+    <div class="row">
+      <button id="viewLogBtn">View Log</button>
+    </div>
+  </main>
+
+  <!-- Log Modal -->
+  <div id="logModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__backdrop" data-close="1"></div>
+    <div class="modal__dialog" role="document">
+      <div class="modal__header">
+        <h2>Monthly Log</h2>
+        <button id="logCloseBtn" class="modal__close" aria-label="Close">×</button>
+      </div>
+      <pre id="logModalBody" class="modal__body">(empty)</pre>
+    </div>
+  </div>
+
+  <!-- App code -->
+  <script src="app.js"></script>
+
+
+
+  <script src="https://unpkg.com/lucide@latest" onload="lucide.createIcons()"></script>
+
+</body>
+
+</html>

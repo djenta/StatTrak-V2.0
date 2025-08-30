@@ -1,0 +1,428 @@
+/* =========================================
+   StatTrak — Glass HUD Theme (Orbitron/Rajdhani)
+   ========================================= */
+
+:root {
+  /* spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+
+  /* sizing */
+  --wrap-max: 520px;
+  --btn-pad-y: 16px;
+  --btn-pad-x: 14px;
+  --radius: 14px;
+
+  /* type */
+  --fs-title: clamp(22px, 4.2vw, 30px);
+  --fs-btn: clamp(16px, 3.8vw, 20px);
+
+  /* palette */
+  --bg: #07090c;
+  --bg-2: rgba(12, 15, 22, 0.6);
+  /* glass */
+  --panel: rgba(18, 22, 30, 0.55);
+  /* glass */
+  --border: rgba(95, 140, 255, 0.18);
+  /* neon-ish border */
+  --text: #eaf2ff;
+  --text-2: #c7d3ea;
+
+  /* accents per counter (subtle borders) */
+  --acc-stop: rgba(94, 161, 255, 0.498);
+  --acc-cite: rgba(94, 255, 199, 0.505);
+  --acc-arrest: rgba(255, 118, 118, 0.508);
+  --acc-ebp: rgba(196, 102, 255, 0.398);
+
+  /* glow color + glass blur */
+  --glow: 100, 200, 255;
+  /* rgb triplet */
+  --glass-blur: 8px;
+
+  /* shadows */
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* Tighten overall spacing by adding class="compact" to <body> */
+body.compact {
+  --space-3: 8px;
+  --space-4: 12px;
+  --btn-pad-y: 12px;
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Rajdhani', system-ui, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(var(--glow), 0.08), transparent 60%),
+    radial-gradient(1000px 500px at 120% 10%, rgba(94, 255, 198, 0.06), transparent 55%),
+    linear-gradient(180deg, #06080b 0%, #0a0e14 100%);
+  color: var(--text);
+}
+
+/* Layout */
+.wrap {
+  max-width: var(--wrap-max);
+  margin: 0 auto;
+  padding: var(--space-4);
+  padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+}
+
+/* Title (Orbitron) */
+h1 {
+  margin: var(--space-2) 0 var(--space-4);
+  font-size: var(--fs-title);
+  font-weight: 700;
+  margin-top: 20px;
+  font-family: 'Orbitron', sans-serif !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #eaf2ff;
+  text-shadow:
+ 
+    0 0 6px rgba(var(--glow), 0.6),
+    0 0 14px rgba(var(--glow), 0.35),
+    0 0 28px rgba(var(--glow), 0.15);
+}
+
+/* Group stacks */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.row {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin: var(--space-2) 0 var(--space-2);
+}
+
+/* Glass panel base */
+.glass {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+/* Buttons (glass cards) */
+button {
+  width: 100%;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  backdrop-filter: blur(var(--glass-blur));
+  color: var(--text);
+  font-family: 'Rajdhani', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: var(--fs-btn);
+  line-height: 1.2;
+  text-align: left;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Neon rim (subtle) */
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    0 0 0 1px rgba(var(--glow), 0.12) inset,
+    0 0 24px rgba(var(--glow), 0.12) inset;
+  pointer-events: none;
+}
+
+/* Sheen on hover */
+button::after {
+  content: "";
+  position: absolute;
+  top: -150%;
+  left: -50%;
+  width: 120%;
+  height: 300%;
+  transform: rotate(25deg);
+  background: linear-gradient(90deg,
+      transparent 0%, rgba(255, 255, 255, 0.05) 45%,
+      rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0.05) 55%,
+      transparent 100%);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+button:hover::after {
+  opacity: 1;
+}
+
+button:hover {
+  box-shadow:
+    0 0 10px rgba(var(--glow), 0.25),
+    0 0 24px rgba(var(--glow), 0.18),
+    var(--shadow);
+  background: rgba(18, 22, 30, 0.66);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+button:focus-visible {
+  outline: 2px solid rgba(var(--glow), 0.7);
+  outline-offset: 2px;
+}
+
+/* Per-button neon accents (border tint) */
+#stopBtn {
+  border-color: var(--acc-stop);
+}
+
+#citeBtn {
+  border-color: var(--acc-cite);
+}
+
+#arrestBtn {
+  border-color: var(--acc-arrest);
+}
+
+#ebpBtn {
+  border-color: var(--acc-ebp);
+}
+
+/* Icon + text alignment */
+#stopBtn,
+#citeBtn,
+#arrestBtn,
+#ebpBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.btn-ico {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  color: var(--text-2);
+  margin-right: auto;
+  /* lock left */
+}
+
+.btn-ico svg,
+.btn-ico svg * {
+  stroke: currentColor;
+  fill: none;
+}
+
+.btn-text {
+  flex: 1;
+}
+
+.btn-label {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+}
+
+.btn-count {
+  flex: 0 0 auto;
+  font-weight: 700;
+  margin-left: auto;
+  /* lock right */
+}
+
+/* Current-month list (glass panel) */
+.month-list {
+  margin: var(--space-3) 0 var(--space-4);
+  padding: var(--space-3);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  max-height: 260px;
+  overflow: auto;
+}
+
+.month-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(100, 120, 160, 0.2);
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+.month-item:last-child {
+  border-bottom: 0;
+}
+
+.month-date {
+  color: #dbe7ff;
+  font-weight: 700;
+  min-width: 88px;
+  letter-spacing: .5px;
+  text-shadow: 0 0 8px rgba(var(--glow), 0.35);
+}
+
+.month-metrics {
+  display: inline;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 10px;
+  opacity: .98;
+  text-shadow: 0 0 6px rgba(var(--glow), 0.35);
+}
+
+.badge svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+/* View Log button row tweaks */
+.row button {
+  text-align: center;
+  flex: 1 1 180px;
+}
+
+/* Modal (glass) */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 60% at 50% 40%, rgba(var(--glow), 0.12), rgba(0, 0, 0, 0.65));
+  backdrop-filter: blur(2px);
+}
+
+.modal__dialog {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  transform: translateX(-50%);
+  width: min(680px, 92vw);
+  max-height: 84vh;
+  border-radius: 16px;
+  border: 1px solid rgba(var(--glow), 0.25);
+  background: rgba(14, 18, 26, 0.6);
+  box-shadow:
+    0 0 30px rgba(var(--glow), 0.25),
+    0 20px 50px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.modal__header,
+.modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(180deg, rgba(16, 20, 28, 0.8), rgba(14, 18, 26, 0.5));
+  border-bottom: 1px solid rgba(var(--glow), 0.18);
+  box-shadow: inset 0 0 18px rgba(var(--glow), 0.12);
+}
+
+.modal__footer {
+  border-top: 1px solid rgba(var(--glow), 0.18);
+  border-bottom: 0;
+}
+
+.modal__close {
+  width: auto;
+  padding: 4px 10px;
+  font-size: 20px;
+  line-height: 1;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid rgba(var(--glow), 0.25);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(var(--glow), 0.2) inset;
+}
+
+.modal__close:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.modal__body {
+  padding: var(--space-3) var(--space-4);
+  max-height: 60vh;
+  overflow: auto;
+  color: var(--text-2);
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'Rajdhani', system-ui, sans-serif;
+  font-size: 14px;
+}
+
+/* Desktop breathing room */
+@media (min-width: 900px) {
+  :root {
+    --wrap-max: 640px;
+  }
+}
+
+/* Enforce Rajdhani everywhere except title */
+body,
+button,
+.month-list,
+.month-item,
+.month-metrics,
+.modal__body,
+.modal__header,
+.modal__footer {
+  font-family: 'Rajdhani', system-ui, sans-serif !important;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif !important;
+  text-transform: none;
+}
